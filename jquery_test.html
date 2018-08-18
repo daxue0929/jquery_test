@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>juery测试</title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+			//使用原生DOM
+			window.onload = function(){
+				var btn1 = document.getElementById("btn1")
+				btn1.onclick=function(){
+					var username =document.getElementById("username").value
+					alert(username)
+				}
+			}
+		</script>
+		<!--引入jquery的库-->
+		<!--2.1.4 -->
+		<!--<script src="jquery.min.js" type="text/javascript" charset="UTF-8">//本地方式引入jq库</script>-->
+		<script src="jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js">//引入的远程的jq库</script>-->
+		<script type="text/javascript">
+//			alert($)
+			//绑定文档加载完成的监听
+			jQuery(function(){  //jquery核心函数jQuery()或者$()
+				var $btn2 = $('#btn2') //$()返回的对象 
+				$btn2.click(function(){  //给btn2绑定监听
+					var username = $('#username').val()
+					alert(username)
+				})
+			})
+			
+			/*
+			1.使用jQuery核心函数: $/Jquery
+			2.使用jQuery核心对象: 执行$()返回的对象 
+			 */
+		</script>
+	</head>
+	<body>
+		<!--1.初识jquery-->
+		用户名:<input type="text" id="username">
+		<button id="btn1">确定(原生版)</button>
+		<button id="btn2">确定(jquery版)</button>
+		<hr>
+		<!--2.jQuery的两把利器-->
+		<!--
+			①jQuery核心函数
+				简称:jQuery函数($/jQuery)
+				jQuery库向外暴露的就是$/jQuery
+				引入jQuery后,直接使用$即可
+					当函数用:$(xxx)
+					当对象用:$.xxx()
+			②jQuery核心对象
+				简称:jQuery对象
+				得到jQuery对象:执行jQuery函数返回值就是jQuery对象
+				使用jQuery对象:$obj.xxx()
+			
+		-->
+		<script type="text/javascript">
+
+			//1.jQuery函数:直接可用
+			console.log($,typeof $)
+			console.log(jQuery === $) //true
+			//.jQuery对象:执行jQuery核心函数得到它
+			console.log($() instanceof Object) //true
+			
+//			(function(window){
+//				var jQuery = function(){
+//					//jQuery向外暴露的只有一个jQuery核心函数
+//					return new xxx()
+//				}
+//				
+//				window.$ = window.jQuery = jQuery
+//			})(window)
+		</script>
+		<!--3.$符号作为函数和作为对象-->
+		<div class="_3">
+			<!--
+			1.作为一般函数调用:$(param)
+				1).参数为函数:当DOM加载完成后,执行此回调函数
+				2).参数为选择器字符串:查找所有匹配的标签,并将它们封装为jQuery对象
+				3).参数为DOM对象:将DOM对象封装为jQuery对象
+				4).参数为html标签字符串(用的少):创建标签读对象并封装成jQuery对象
+			2.作为对象使用:$.xxx()
+				1).$.each() : 隐式遍历数组
+				2).$.trim() : 去除两端的空格
+			-->
+			<button id="_3btn">测试3</button>
+			<input type="text" name="b1" id="b1" value="html文档显示" />
+			<script type="text/javascript">
+				/*
+				 需求1:点击按钮:显示按钮的文本,显示一个新的输入框
+				 需求2:遍历输出数组中的所有元素
+				 需求3:去掉"  my atguigu  "两端的空格
+				*/
+				$(function(){  //绑定文档加载完成的监听
+					$("#_3btn").click(function(){  //绑定点击事件监听函数
+						//this是什么?发生事件的DOM元素
+						//alert(this.innerHTML)
+						//alert($(this).html())
+						$('<input type="text" class="msg3" /><br/>').appendTo("._3")
+					})
+					var arr = [2,4,7]
+					$.each(arr, function(index,item){
+						console.log(index,item)
+					})
+					
+					var str = "  my atguigu  "
+					console.log('---'+str.trim()+"---")
+					console.log('---'+$.trim(str)+"---")
+					
+				})
+			</script>
+		</div>
+		<hr>
+		<div class="_4">
+			<input type="button" class="_4btn" value="按钮1" />
+			<input type="button" class="_4btn" value="按钮2" />
+			<input type="button" class="_4btn" id="_4btn3" value="按钮3" />
+			<input type="button" class="_4btn" value="按钮4" />
+			<script type="text/javascript">
+				console.log("_4基本行为"+$.length)
+				var $button = $("._4btn")   //返回一个伪数组
+				console.log("_4的第二次输出"+$button.size(),$button.length) //4 4
+				console.log("第三次输出"+$button[1].value,$button.get(1).value)  //不理解
+				
+				$button.each(function(){
+					console.log("第四次输出"+this.value)  //这个伪数组
+				})
+				
+				console.log("第五次输出"+$("#_4btn3").index())
+				
+				console.log("第六次输出"+($button instanceof Array))  //$button不是一个数组
+				/*
+				1.伪数组
+					* Object对象
+					* Length属性
+					* 数组下访问
+					* 没有数组特别的方法:forEach(),push(),pip(),splice()
+				*/
+				//自定义一个伪数组
+				var weiArr = {}
+				weiArr.length = 0
+				weiArr[0] = 'atguigu'
+				weiArr.length = 1
+				weiArr[1] = "at beijing"
+				weiArr.length = 2
+				for (var i = 0; i < weiArr.length; i++) {
+					var obj = weiArr[i]
+					console.log(i,obj)
+				}
+				console.log(weiArr.forEach,$button.forEach) //undefined undefined
+			</script>
+		</div>
+		<div class="_5">
+			<!--选择器-->
+			<script type="text/javascript">
+				//
+				//过滤选择器:在原有选择器匹配的元素中进一步进行过滤的选择器,分类:基本过滤选择器,内容过滤,可见性过滤,属性过滤选择器
+				
+				
+				
+			</script>
+		</div>
+	
+	</body>
+</html>
