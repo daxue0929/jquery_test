@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery测试</title>
+	</head>
+	<body>
+		<div id="div1" class="box">div1(class='box')</div>
+		<div id="div2" class="box">div2(class='box')</div>
+		<div id="div3">div3</div>
+		<span class="box">span(class='box')</span>
+		
+		<br />
+		<hr />
+		<br />
+		<ul>
+			<li>AAAA</li>
+			<li title="hello">BBB</li>
+			<li class="box">CCCCC(class='box')</li>
+			<li title="hello">span(title='hello')</li>
+		</ul>
+		
+		<hr />
+		<br />
+		<ul>
+			<li>AAAAAAAAA</li>
+			<li class="box">CCCCC(class='box')</li>
+			<li title="hello"><span>BBBB</span></li>
+			<li title="hello"><span class="box">DDDDDDDDD</span></li>
+			<span>EEEEE</span>
+			
+		</ul>
+		<script src="jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//基本选择器
+			//1. 选择id为div1的元素
+			$("#div1").css('background','red')			
+			//2. 选择所有的div元素
+			$("div").css('background','green')	
+			//3. 选择所有class属性为box的div元素
+			$('.box').css('background','pink')	
+			//4. 选择所有div和span元素
+			$("div,span").css('background','yellow')	
+			//5. 选择所有class属性为box的div元素
+			$('div.box').css('background','blue')
+			//$('*').css('background','red')	
+			
+			//层次选择器
+			//1.选中ul下所有的span标签
+			$("ul span").css('background','blue')
+			//2.选中ul下所有的子元素span
+			$("ul>span").css('background','red')
+			//3.选中class为box的下一个li
+			$(".box+li").css('background','deeppink')
+			//4.选中ul下的class为box的元素后面的所有的兄弟元素
+			$("ul .box~*").css('background','green')
+		</script>
+	</body>
+</html>

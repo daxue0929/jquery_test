@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery测试</title>
+		<style type="text/css">
+			
+			#data{
+				width: 600px;
+			}
+			
+			#data, td, th{
+				border-collapse: collapse;
+				border: 1px solid #aaaaaa;
+			}
+			th, td{
+				height: 28px;
+			}
+			thead tr th{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="data">
+			<thead>
+			<tr>
+				<th>姓名</th>
+				<th>工资</th>
+				<th>入职时间</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Tom</td>
+					<td>$3500</td>
+					<td>2010-10-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Mary</td>
+					<td>$5100</td>
+					<td>2000-2-5</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Cat</td>
+					<td>$300</td>
+					<td>2080-1-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Jenny</td>
+					<td>$300</td>
+					<td>2080-1-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Smith</td>
+					<td>$300</td>
+					<td>2080-1-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Smith</td>
+					<td>$300</td>
+					<td>2080-1-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Smith</td>
+					<td>$300</td>
+					<td>2080-1-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+			</tbody>
+			
+		</table>
+		<!--
+			
+			
+		-->
+		<script src="jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 字符串逐行变色
+			*/
+			$("#data>tbody>tr:odd").css("background","#ccccff")
+		</script>
+	</body>
+</html>
