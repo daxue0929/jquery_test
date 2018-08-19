@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery测试</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#tab li{
+				float: left;
+				list-style: none;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				cursor: pointer;
+				/*background: goldenrod;*/
+				text-align: center;
+			}
+			#container{
+				position: relative;
+				top: 40px;
+				left: -240px;
+				float: left;
+				height: 100px;
+				width: 240px;
+				text-align: center;
+				
+			}
+			#content1{
+				height: 100px;
+				width: 240px;
+			}
+			#content2{
+				height: 100px;
+				width: 240px;
+			}
+			#content3{
+				height: 100px;
+				width: 240px;
+			}
+			#tab1,#content1{
+				background: deeppink;
+			}
+			#tab2,#content2{
+				background: peru;
+			}
+			#tab3,#content3{
+				background: peachpuff;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<ul id="tab">
+			<li id="tab1">10元套餐</li>
+			<li id="tab2">30元套餐</li>
+			<li id="tab3">50元套餐</li>
+		</ul>
+		
+		<div id="container">
+			<div id="content1">
+				10元套餐详情:<br />每月套餐内拨打100分钟,超出部分0.2元/每分钟
+			</div>
+			<div id="content2" style="...">
+				30元套餐详情:<br />每月套餐内拨打300分钟,超出部分1.5元/每分钟
+			</div>
+			<div id="content3" style="...">
+				50元套餐详情:<br />每月无限量随心打
+			</div>
+		</div>
+		<script src="jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$contents = $("#container>div")
+			$contents.css('display','none')
+			$($contents[0]).css('display','block')
+			//给三个li加监听
+			$("#tab>li").click(function(){
+//				alert("---")
+				$contents.css('display','none')
+				var index = $(this).index()
+				$($contents[index]).css('display',"block")
+
+			})
+		</script>
+	</body>
+</html>
