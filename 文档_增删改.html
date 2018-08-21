@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery测试</title>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>AAAAAA</li>
+			
+			<li title="hello">BBBBBB</li>
+			<li class="box">CCCCC</li>
+			
+			<li title="hello">DDDDDD</li>
+			<li title="two">EEEEE</li>
+		</ul>
+		<ul id="ul2">
+			<li>aaaa</li>
+			<li title="hello">bbbb</li>
+			<li class="box">cccccc</li>
+			
+			<li title="hello">dddddd</li>
+			<li title="two">eeeeee</li>
+		</ul>
+		<script src="jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			1.向id为ul1的ul下添加一个span(最后)
+			var $ul1 = $("#ul1")
+			$ul1.append('<span>append()添加的span</span>')
+//			$('<span>appendTo()添加的span</span>').appendTo($ul1)
+
+//			2.向id为ul1的ul下添加一个span(最前面)
+			$ul1.prepend("<span>prepend()放在最前面的span</span>")
+//			$('<span>prepend()添加的最前面的span</span>').prependTo($ul1)
+
+			//3.在id为ul1的ul下的li(title为hello)的前面添加span
+			$ul1.children('li[title=hello]').before('before()函数插入的<span>添加的span</span>')			
+			//4.在id为ul1的ul下的li(title为hello)的前面添加span
+			$ul1.children('li[title=hello]').after('after()函数插入的<span>添加的span</span>')
+			//5.将在id为ul为ul2的ul下的(title为hello)全部替换为p
+			$("#ul2>li[title=hello]").replaceWith("<p>replaceWith()替换的p</p>")	//参数为dom元素		
+			//6.一处移除id为ul2下的所有li
+//			$("#ul2>li").remove()
+
+//			$("#ul2>li").empty()
+			$("#ul2").empty()
+
+		</script>
+	</body>
+</html>
