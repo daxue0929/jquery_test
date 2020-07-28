@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style type="text/css">
-        #menu {border: 1px solid black; }
-        #menu li {list-style: none;}
-        #menu li ul {display: none;}
+        #menu {
+            border: 1px solid black;
+        }
+
+        #menu li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #menu li:hover {
+            list-style: none;
+            cursor: pointer;
+            color: red
+        }
+
+        #menu li ul {
+            display: none;
+        }
     </style>
+
+
+</head>
 <body>
-
-<li>李磊</li><li>系统一部</li><ul><li>李磊2</li><li>系统一部中心1</li><li>李磊3</li><li>系统一部中心2</li><li>李磊4</li><li>系统一部中心3</li><ul><li>王磊2</li><li>系统一部中心1</li><ul><li>张磊2</li><li>系统一部中心4</li><li>张磊3</li><li>系统一部中心4</li></ul><li>王磊3</li><li>系统一部中心2</li><li>王磊4</li><li>系统一部中心3</li></ul></ul>
-
-
+<div id="menu"></div>
 </body>
-
-
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript">
-
-
     var treeJson = [
         {
             name: '李磊',
@@ -27,7 +38,8 @@
             children: [
                 {name: '李磊2', ssdw: '系统一部中心1'},
                 {name: '李磊3', ssdw: '系统一部中心2'},
-                {name: '李磊4', ssdw: '系统一部中心3',
+                {
+                    name: '李磊4', ssdw: '系统一部中心3',
                     children: [
                         {
                             name: '王磊2',
@@ -49,14 +61,13 @@
     function buildMenu(obj) {
         var str = "";
         $.each(obj, function (index, item) {
-            if (typeof(obj[index].children) == "object") {
+            if (typeof (obj[index].children) == "object") {
                 str += "<li>" + obj[index].name + "</li>";
                 str += "<li>" + obj[index].ssdw + "</li>";
                 str += "<ul>";
                 str += buildMenu(obj[index].children); //递归判断是不是object,直到不是li
                 str += "</ul>";
-            }
-            else {
+            } else {
                 //  alert(index + "--" + obj[index]);  //item == obj[index]
 
                 str += "<li>" + obj[index].name + "</li>"
@@ -67,11 +78,7 @@
 
         return str;
     }
-    console.log(buildMenu(treeJson));
-
+    // console.log(buildMenu(treeJson));
+    $("#menu").html(buildMenu(treeJson))
 </script>
-</head>
-<body>
-<div id="menu"></div>
-</body>
 </html>
